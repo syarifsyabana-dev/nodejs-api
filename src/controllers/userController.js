@@ -10,6 +10,7 @@ const getUsers = async (req, res) => {
     const data = [];
     users.map((x) =>
       data.push({
+        key: x._id,
         id: x._id,
         username: x.username,
         email: x.email,
@@ -18,7 +19,7 @@ const getUsers = async (req, res) => {
     );
     res.status(httpStatus.OK).json({
       status: httpStatus.OK,
-      message: httpStatus["200_NAME"],
+      message: httpStatus[200],
       data,
     });
   } catch (error) {
@@ -69,7 +70,7 @@ const createUser = async (req, res) => {
     await user.save();
     res.status(httpStatus.CREATED).json({
       status: httpStatus.OK,
-      message: httpStatus["200_MESSAGE"],
+      message: httpStatus[200],
     });
   } catch (error) {
     res
